@@ -1,4 +1,4 @@
-# WordCount-PySpark
+# PySpark- WordCount, under the hood!
 Running my first pyspark app in CDH5
 
 ## PySpark Job in Spark UI
@@ -14,3 +14,8 @@ It waits until a action is called.
 
 So this **Job** was further divided into two stages, one for Stage0: reduceByKey and the other for Stage1: collect(our last code).
 Since we used reduceByKey it 
+
+## DAG for Stage1: Collect
+[![screenshot_1509488721.png](https://s19.postimg.org/tq0yqct0j/screenshot_1509488721.png)](https://postimg.org/image/lxaaydn1b/)
+
+This clearly show a PythonRDD object is a **scala** object under the hood. It reads/takes the 2.1 KB of shuffled data, **map** it together and returns a **RDD**.
