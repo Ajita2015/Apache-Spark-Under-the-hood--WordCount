@@ -31,7 +31,7 @@ ___
 ___
 
 # Method 2:
-### Using .reduceByKey(add)instead of .reduceByKey(lambda w1,w2: w1 + w2)
+### Using ***.reduceByKey(add)*** instead of *.reduceByKey(lambda w1,w2: w1 + w2)*
 
 ```python
 from operator import add
@@ -42,7 +42,6 @@ count.collect()
 
 ```
 
-### A good defination for flatMap I found on [Stackoverflow](https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g "Stack Overflow page")
 
 ### Later I tried to run it multiple time
 [![screenshot_1509567975.png](https://s19.postimg.org/u81mmvdmb/screenshot_1509567975.png)](https://postimg.org/image/4chw3obsf/)
@@ -54,3 +53,14 @@ count.collect()
 [![screenshot_1509568064.png](https://s19.postimg.org/nvmhclfkj/screenshot_1509568064.png)](https://postimg.org/image/77uza3ksv/)
 
 
+___
+___
+___
+## References: 
+### A good defination for flatMap I found on [Stackoverflow](https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g "Stack Overflow page")
+
+### Spark Framework:
+[![screenshot_1509568572.png](https://s19.postimg.org/z990npq2b/screenshot_1509568572.png)](https://postimg.org/image/5hby8j38v/)
+
+### Helpful Youtube video:
+[![Spark Architecture](https://s19.postimg.org/6wdixj6zn/screenshot_1509568910.png)](https://www.youtube.com/watch?v=wzy0oluoyN8)
