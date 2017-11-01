@@ -1,5 +1,6 @@
 # PySpark- WordCount, under the hood!
 Running my first pyspark app in CDH5
+___
 
 ## PySpark Job in Spark UI
 [![screenshot_1509487656.png](https://s19.postimg.org/4sxl9ku9v/screenshot_1509487656.png)](https://postimg.org/image/clo91k08v/)
@@ -26,10 +27,11 @@ Shuffles are expensive operations; all shuffle data must be written to disk and 
 This clearly show a PythonRDD object is a **scala** object under the hood. It reads/takes the 2.1 KB of shuffled data, **map** it together and returns a **RDD**.
 
 
+___
+___
 
 # Method 2:
-## A good defination of flatMap I found on [Stackoverflow] 
-(https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g)
+### Using .reduceByKey(add)instead of .reduceByKey(lambda w1,w2: w1 + w2)
 
 ```python
 from operator import add
@@ -39,3 +41,16 @@ count=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).re
 count.collect()
 
 ```
+
+### A good defination for flatMap I found on [Stackoverflow](https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g "Stack Overflow page")
+
+### Later I tried to run it multiple time
+[![screenshot_1509567975.png](https://s19.postimg.org/u81mmvdmb/screenshot_1509567975.png)](https://postimg.org/image/4chw3obsf/)
+
+### What if I skip the reduceByKey() and jump on to collect()
+[![screenshot_1509568027.png](https://s19.postimg.org/korxsu5df/screenshot_1509568027.png)](https://postimg.org/image/3o91k5sbz/)
+
+### It will skip the reducing part from DAG and read the shuffled data and displays output
+[![screenshot_1509568064.png](https://s19.postimg.org/nvmhclfkj/screenshot_1509568064.png)](https://postimg.org/image/77uza3ksv/)
+
+
