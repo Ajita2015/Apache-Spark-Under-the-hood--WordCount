@@ -43,8 +43,8 @@ count.collect()
 ```
 
 
-### Later I tried to run it multiple time
-[![screenshot_1509567975.png](https://s19.postimg.org/u81mmvdmb/screenshot_1509567975.png)](https://postimg.org/image/4chw3obsf/)
+### Later I tried to run it multiple times, with duration reducing in each run:
+[![screenshot_1509569301.png](https://s19.postimg.org/ubvg2syfn/screenshot_1509569301.png)](https://postimg.org/image/b6s6t1jrj/)
 
 ### What if I skip the reduceByKey() and jump on to collect()
 [![screenshot_1509568027.png](https://s19.postimg.org/korxsu5df/screenshot_1509568027.png)](https://postimg.org/image/3o91k5sbz/)
@@ -57,10 +57,10 @@ ___
 ___
 ___
 ## References: 
-### A good defination for flatMap I found on [Stackoverflow](https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g "Stack Overflow page")
+### 1. A good defination for flatMap I found on [Stackoverflow](https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g "Stack Overflow page")
 
-### Spark Framework:
+### 2. Spark Framework:
 [![screenshot_1509568572.png](https://s19.postimg.org/z990npq2b/screenshot_1509568572.png)](https://postimg.org/image/5hby8j38v/)
 
-### Helpful Youtube video:
+### 3. Helpful Youtube video:
 [![Spark Architecture](https://s19.postimg.org/6wdixj6zn/screenshot_1509568910.png)](https://www.youtube.com/watch?v=wzy0oluoyN8)
