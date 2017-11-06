@@ -57,27 +57,43 @@ ___
 
 # Method 3: reduceByKey VS groupByKey
 
-
+## reduceByKey()
 ```python
-count=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduceByKey(lambda w1,w2: w1+w2)
 
-count.collect()
+count_reduceByKey=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduceByKey(lambda w1,w2: w1 + w2)
+
+count_reduceByKey.collect()
 
 ```
 ### How it works:
 [![screenshot_1509983710.png](https://s19.postimg.org/vb66b4nk3/screenshot_1509983710.png)](https://postimg.org/image/pa8he20xr/)
 
-## VS
+## VS 
+
+
+## groupByKey()
 
 ```python
-count=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).groupByKey().map(lambda (w1,w2): w1+w2)
 
-count.collect()
+count_groupByKey=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).groupByKey().map(lambda (word,count): (word,sum(count)))
+
+count_groupByKey.collect()
 
 ```
+
+### How it works:
 [![screenshot_1509983773.png](https://s19.postimg.org/mg5c0q937/screenshot_1509983773.png)](https://postimg.org/image/8mgzboghr/)
 
+
+## Comparing their performance, under the hood: 
+
 [![screenshot_1509988947.png](https://s19.postimg.org/xc5wnqvzn/screenshot_1509988947.png)](https://postimg.org/image/o4do71oxb/)
+In Saprk UI under the **Stages** tab you can chekc the read/write performed by our job.
++ This **Job** is divided in to two **Stages**
++ Stage0 for groupByKey()
++ Stage1 for collect()
++ They both shuffled **2.5 KB** ko data, as compared to reduceBYKey() **2.1 KB**
+
 ___
 ___
 ___
