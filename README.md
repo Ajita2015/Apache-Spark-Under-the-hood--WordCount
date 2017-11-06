@@ -16,10 +16,6 @@ So this **Job** was further divided into two stages, one for Stage0: reduceByKey
 We used reduceByKey in it,so in future try to minimize the number of shuffles and the amount of data shuffled.
 Shuffles are expensive operations; all shuffle data must be written to disk and then transferred over the network.
 
-[![screenshot_1509983773.png](https://s19.postimg.org/mg5c0q937/screenshot_1509983773.png)](https://postimg.org/image/8mgzboghr/)
-## VS
-[![screenshot_1509983710.png](https://s19.postimg.org/vb66b4nk3/screenshot_1509983710.png)](https://postimg.org/image/pa8he20xr/)
-
 
 ## DAG for Stage1: Collect
 
@@ -56,7 +52,32 @@ count.collect()
 ### It will skip the reducing part from DAG and read the shuffled data and displays output
 [![screenshot_1509568064.png](https://s19.postimg.org/nvmhclfkj/screenshot_1509568064.png)](https://postimg.org/image/77uza3ksv/)
 
+___
+___
 
+# Method 3: reduceByKey VS groupByKey
+
+
+```python
+count=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduceByKey(lambda w1,w2: w1+w2)
+
+count.collect()
+
+```
+### How it works:
+[![screenshot_1509983710.png](https://s19.postimg.org/vb66b4nk3/screenshot_1509983710.png)](https://postimg.org/image/pa8he20xr/)
+
+## VS
+
+```python
+count=myfile.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).groupByKey().map(lambda (w1,w2): w1+w2)
+
+count.collect()
+
+```
+[![screenshot_1509983773.png](https://s19.postimg.org/mg5c0q937/screenshot_1509983773.png)](https://postimg.org/image/8mgzboghr/)
+
+[![screenshot_1509988947.png](https://s19.postimg.org/xc5wnqvzn/screenshot_1509988947.png)](https://postimg.org/image/o4do71oxb/)
 ___
 ___
 ___
