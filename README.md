@@ -16,6 +16,11 @@ So this **Job** was further divided into two stages, one for Stage0: reduceByKey
 We used reduceByKey in it,so in future try to minimize the number of shuffles and the amount of data shuffled.
 Shuffles are expensive operations; all shuffle data must be written to disk and then transferred over the network.
 
+[![screenshot_1509983773.png](https://s19.postimg.org/mg5c0q937/screenshot_1509983773.png)](https://postimg.org/image/8mgzboghr/)
+## VS
+[![screenshot_1509983710.png](https://s19.postimg.org/vb66b4nk3/screenshot_1509983710.png)](https://postimg.org/image/pa8he20xr/)
+
+
 ## DAG for Stage1: Collect
 
 [![screenshot_1509492181.png](https://s19.postimg.org/iy7zoqnfn/screenshot_1509492181.png)](https://postimg.org/image/9qfr81gdb/)
@@ -58,8 +63,10 @@ ___
 ## References: 
 ### 1. A good defination for flatMap I found on [Stackoverflow](https://stackoverflow.com/questions/22350722/can-someone-explain-to-me-the-difference-between-map-and-flatmap-and-what-is-a-g "Stack Overflow page")
 
-### 2. Spark Framework:
+### 2. reduceByKey VS groupByKey [Databricks](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html "Avoid GroupByKey")
+
+### 3. Spark Framework:
 [![screenshot_1509568572.png](https://s19.postimg.org/z990npq2b/screenshot_1509568572.png)](https://postimg.org/image/5hby8j38v/)
 
-### 3. Helpful Youtube video:
+### 4. Helpful Youtube video:
 [![Spark Architecture](https://s19.postimg.org/6wdixj6zn/screenshot_1509568910.png)](https://www.youtube.com/watch?v=wzy0oluoyN8)
