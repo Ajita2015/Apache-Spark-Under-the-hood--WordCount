@@ -102,8 +102,10 @@ ___
 
 ### 2. reduceByKey VS groupByKey [Databricks](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html "Avoid GroupByKey")
 
-### 3. Spark Framework:
+### 3. For Kerberos TGT [kinit this!](http://www.roguelynn.com/words/explain-like-im-5-kerberos/ "Nice article, trust me")
+
+### 4. Spark Framework:
 [![screenshot_1509568572.png](https://s19.postimg.org/z990npq2b/screenshot_1509568572.png)](https://postimg.org/image/5hby8j38v/)
 
-### 4. Helpful Youtube video:
+### 5. Helpful Youtube video:
 [![Spark Architecture](https://s19.postimg.org/6wdixj6zn/screenshot_1509568910.png)](https://www.youtube.com/watch?v=wzy0oluoyN8)
