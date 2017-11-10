@@ -94,6 +94,25 @@ In Saprk UI under the **Stages** tab you can chekc the read/write performed by o
 + Stage1 for collect()
 + They both shuffled **2.5 KB** ko data, as compared to reduceBYKey() **2.1 KB**
 
+
+___
+
+# Method 4: Sorting and Filtering:
+```python
+
+textbook=sc.textFile('hdfs://devtoolsRnD/data/everyone/work/hive/SparkCookbook.txt')
+
+textbook.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduceByKey(add).sortBy(lambda x: (x[1]),ascending=False).filter(lambda x:x[1]>600).collect()
+
+```
+[(u'the', 2516),
+ (u'to', 1157),
+ (u'a', 928),
+ (u'is', 896),
+ (u'of', 895),
+ (u'and', 782),
+ (u'in', 624)]
+
 ___
 ___
 ___
