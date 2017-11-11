@@ -97,21 +97,44 @@ In Saprk UI under the **Stages** tab you can chekc the read/write performed by o
 
 ___
 
-# Method 4: Sorting and Filtering:
+# Method 4: Sorting then Filtering VS Filtering then Sorting:
+
+## Sorting then Filterin
+
 ```python
 
 textbook=sc.textFile('hdfs://devtoolsRnD/data/everyone/work/hive/SparkCookbook.txt')
+```
 
+```python
 textbook.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduceByKey(add).sortBy(lambda x: (x[1]),ascending=False).filter(lambda x:x[1]>600).collect()
 
 ```
-[(u'the', 2516),
- (u'to', 1157),
- (u'a', 928),
- (u'is', 896),
- (u'of', 895),
- (u'and', 782),
- (u'in', 624)]
+[('the', 2516),
+ ('to', 1157),
+ ('a', 928),
+ ('is', 896),
+ ('of', 895),
+ ('and', 782),
+ ('in', 624)]
+ 
+ [![screenshot_1510422201.png](https://s19.postimg.org/77z991m7n/screenshot_1510422201.png)](https://postimg.org/image/eb74onrn3/)
+ 
+ ## Less Shuffle
+ 
+ 
+ ## VS
+ 
+ 
+ ## Filtering then Sorting
+
+```python
+textbook.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduceByKey(add).filter(lambda x:x[1]>600).sortBy(lambda x: (x[1]),ascending=False).collect()
+
+```
+[![screenshot_1510422439.png](https://s19.postimg.org/lef04gk9v/screenshot_1510422439.png)](https://postimg.org/image/gfrhpxggv/)
+
+## More Shuffle
 
 ___
 ___
