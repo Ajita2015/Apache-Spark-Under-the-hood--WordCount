@@ -1,6 +1,10 @@
 # PySpark- WordCount, under the hood!
-Running my first pyspark app in CDH5
+Running my first pyspark app in CDH5.
+
+Spark has many key components in the Spark infrastructure, but there are a few basics that are covered here.
+These are **partitioning**, **caching**, **serialization**, and the **shuffle** operation.
 ___
+
 
 ## PySpark Job in Spark UI
 [![screenshot_1509487656.png](https://s19.postimg.org/4sxl9ku9v/screenshot_1509487656.png)](https://postimg.org/image/clo91k08v/)
@@ -120,7 +124,7 @@ textbook.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduce
  
  [![screenshot_1510422201.png](https://s19.postimg.org/77z991m7n/screenshot_1510422201.png)](https://postimg.org/image/eb74onrn3/)
  
- ## Less Shuffle
+ ### Less Shuffle
  
  
  ## VS
@@ -134,7 +138,7 @@ textbook.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduce
 ```
 [![screenshot_1510422439.png](https://s19.postimg.org/lef04gk9v/screenshot_1510422439.png)](https://postimg.org/image/gfrhpxggv/)
 
-## More Shuffle
+### More Shuffle
 ___
 
 
@@ -153,7 +157,7 @@ myfile.persist(StorageLevel.MEMORY_AND_DISK_SER)
 ```
 [![screenshot_1510423129.png](https://s19.postimg.org/ve9wkaaxv/screenshot_1510423129.png)](https://postimg.org/image/801x8ct0f/)
 
-## Store RDD as serialized Java objects (one byte array per partition). This is generally more space-efficient than deserialized objects, especially when using a fast serializer, but more CPU-intensive to read. but spill partitions that don't fit in memory to disk instead of recomputing them on the fly each time they're needed.
+### Store RDD as serialized Java objects (one byte array per partition). This is generally more space-efficient than deserialized objects, especially when using a fast serializer, but more CPU-intensive to read. but spill partitions that don't fit in memory to disk instead of recomputing them on the fly each time they're needed.
 
 ## Deserialized Caching
 
@@ -162,7 +166,7 @@ myfile.persist(StorageLevel.MEMORY_AND_DISK)
 ```
 [![screenshot_1510423378.png](https://s19.postimg.org/gwcpc61lf/screenshot_1510423378.png)](https://postimg.org/image/nzkkrs70v/)
 
-## Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, store the partitions that don't fit on disk, and read them from there when they're needed
+### Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, store the partitions that don't fit on disk, and read them from there when they're needed
 
 
 ___
