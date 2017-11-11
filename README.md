@@ -97,9 +97,9 @@ In Saprk UI under the **Stages** tab you can chekc the read/write performed by o
 
 ___
 
-# Method 4: Sorting then Filtering VS Filtering then Sorting:
+# Topic 4: Sorting then Filtering VS Filtering then Sorting:
 
-## Sorting then Filterin
+## Sorting then Filtering
 
 ```python
 
@@ -135,6 +135,35 @@ textbook.flatMap(lambda line: line.split(" ")).map(lambda word: (word,1)).reduce
 [![screenshot_1510422439.png](https://s19.postimg.org/lef04gk9v/screenshot_1510422439.png)](https://postimg.org/image/gfrhpxggv/)
 
 ## More Shuffle
+___
+
+
+# Topic 5: RDD Persistence: Serialized Caching vs Deserialized Caching:
+
+## Serialized Caching
+
+```python
+myfile.cache()
+```
+
+OR
+
+```python
+myfile.persist(StorageLevel.MEMORY_AND_DISK_SER)
+```
+[![screenshot_1510423129.png](https://s19.postimg.org/ve9wkaaxv/screenshot_1510423129.png)](https://postimg.org/image/801x8ct0f/)
+
+## Store RDD as serialized Java objects (one byte array per partition). This is generally more space-efficient than deserialized objects, especially when using a fast serializer, but more CPU-intensive to read. but spill partitions that don't fit in memory to disk instead of recomputing them on the fly each time they're needed.
+
+## Deserialized Caching
+
+```python
+myfile.persist(StorageLevel.MEMORY_AND_DISK)
+```
+[![screenshot_1510423378.png](https://s19.postimg.org/gwcpc61lf/screenshot_1510423378.png)](https://postimg.org/image/nzkkrs70v/)
+
+## Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, store the partitions that don't fit on disk, and read them from there when they're needed
+
 
 ___
 ___
