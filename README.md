@@ -168,6 +168,7 @@ myfile.persist(StorageLevel.MEMORY_AND_DISK)
 
 ### Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, store the partitions that don't fit on disk, and read them from there when they're needed
 
+### You can also check for Data Locality level, my observation was: for reduceByKey & groupByKey it was set at NODE_LOCAL and when I did collect() it was PROCESS_LOCAL
 
 ___
 ___
