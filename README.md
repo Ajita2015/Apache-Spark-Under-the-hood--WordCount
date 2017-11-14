@@ -168,6 +168,11 @@ myfile.persist(StorageLevel.MEMORY_AND_DISK)
 
 ### Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, store the partitions that don't fit on disk, and read them from there when they're needed
 
+
+# Topic 5: Data Locality
+### Spark is a framework which lets user to create parallel data processing code and then distribute that code across a cluster of machines, which means it will execute tasks as close to where the data lives as possible (i.e. minimize data transfer).
+Eg: Push down predicates.
+
 ### You can also check for Data Locality level, my observation was: for reduceByKey & groupByKey it was set at NODE_LOCAL and when I did collect() it was PROCESS_LOCAL
 
 ___
